@@ -1,7 +1,14 @@
-<div class="max-w-full sm:max-w-7xl mx-auto flex flex-col flex-wrap">
+<div class="max-w-full sm:max-w-5xl mx-auto flex flex-col flex-wrap">
   <app-header></app-header>
   <div class="flex flex-row flex-wrap items-center justify-center gap-3">
     <app-recipes></app-recipes>
     <app-shopping-list></app-shopping-list>
   </div>
+  
+  <app-main 
+  (serverCreated) = "onServerAdded($event)"
+  *ngFor="let serverElement of serverElements"
+  [element]="serverElement"
+  [childString]="parentString"
+  (emitedEvent)="reactToChild()"></app-main>
 </div>
