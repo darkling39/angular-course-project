@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-pipes',
+  templateUrl: './pipes.component.html',
+  styleUrls: ['./pipes.component.css']
 })
-export class AppComponent {
+export class PipesComponent {
   placeholder = 'Search for status'
   appStatus = new Promise((resolve, reject) => {
     setTimeout(() => {

@@ -1,0 +1,31 @@
+<div class="h-[100vh]">
+    <div class="max-w-5xl mx-auto pt-10">
+        <div>
+        <input 
+            placeholder="Search for status"
+            class="w-full p-2 border placeholder-green-600/50 font-extralight border-green-700 text-xl outline-green-300 text-green-600"
+            type="text"
+            [(ngModel)] = 'serverStatus'
+            >
+        </div>
+        <button 
+        class="w-full bg-green-500 py-2 text-center my-2 font-extralight text-lg rounded-md text-white"
+        (click)="addServer()"
+        >Add server</button>
+        <h1 class="text-lg font-extralight text-center">App Status: {{appStatus | async}}</h1>
+        <div *ngFor="let server of servers | filter:serverStatus:'status' " class="bg-yellow-50 text-yellow-900">
+        <div 
+            [ngClass]="{'bg-green-100 text-green-900' : server.status === 'stable'}" 
+            class="min-w-full justify-between flex  p-3 rounded-md">
+            <div class="flex flex-row gap-2"> 
+            <h1 class="font-semibold">{{server.name | shorten:10}}</h1>
+            <p>| {{server.instanceType | uppercase}} |</p>
+            <p>{{server.started | date:'fullDate'}}</p>
+            </div>
+            <div class="bg-gray-500 px-3 text-white rounded-xl">
+                <p class="font-semibold text-center relative bottom-0.5"> {{server.status}}</p>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
